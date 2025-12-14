@@ -166,7 +166,7 @@ jobs:
           - SoC               : Qualcomm Snapdragon 845
           - Architecture      : ARM64
           - Android Version   : A12–A15
-          
+
           **Build Information**
           - Kernel Version    : ${{ env.KERNEL_VER }}
           - Variant           : ${{ env.KERNEL_VARIANT }}
