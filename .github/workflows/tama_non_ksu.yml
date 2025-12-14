@@ -156,7 +156,7 @@ jobs:
       if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ matrix.codename }}-${{ env.ZIP_NAME }}
+        name: ${{ env.ZIP_NAME }}
         path: ${{ env.KERNEL_DIR }}/${{ env.ZIP_NAME }}
           ${{ env.LOG_FILE }}
 
