@@ -11,14 +11,6 @@ jobs:
       fail-fast: false
       matrix:
         codename:
-          - akari
-          - akatsuki
-          - apollo
-          - aurora
-          - akari_kddi
-          - akatsuki_kddi
-          - apollo_dcm
-          - aurora_kddi
           - mido
 
     env:
