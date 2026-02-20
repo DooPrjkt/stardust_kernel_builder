@@ -67,6 +67,9 @@ jobs:
         cd $KERNEL_DIR
         CONFIG_NAME="${{ matrix.codename }}_defconfig"
         DEFCONFIG_PATH="arch/arm64/configs/$CONFIG_NAME"
+        echo "CONFIG_KSU=y" >> "${DEFCONFIG_PATH}"
+        echo "CONFIG_KSU_TAMPER_SYSCALL_TABLE=y" >> "${DEFCONFIG_PATH}"
+        echo "CONFIG_KSU_EXTRAS=y" >> "${DEFCONFIG_PATH}"
         sed -i "s/CONFIG_LOCALVERSION=\"-perf\"/CONFIG_LOCALVERSION=\"-$KERNEL_VER\"/" "$DEFCONFIG_PATH"
         make O=out ARCH=arm64 "$CONFIG_NAME"
         mv out/.config "$DEFCONFIG_PATH"
@@ -121,9 +124,6 @@ jobs:
         export KBUILD_BUILD_USER=ivy
         export KBUILD_BUILD_HOST="$KERNEL_COMMIT_ID"
         export PATH="$CLANG_DIR/bin:$PATH"
-        export CONFIG_KSU=y
-        export CONFIG_KSU_TAMPER_SYSCALL_TABLE=y
-        export CONFIG_KSU_EXTRAS=y
         mkdir -p "$OUT_DIR"
 
         make O="$OUT_DIR" ARCH=arm64 "$CONFIG_NAME"
